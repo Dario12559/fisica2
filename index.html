@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física II - Compendio Académico</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <style>
+        :root {
+            --primary-color: #0f2c59;
+            --secondary-color: #dadbdc;
+            --text-color: #2b2b2b;
+            --accent-color: #8c1d40;
+            --bg-color: #fafdff;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            width: 150px;
+            height: 60px;
+            border: 2px dashed #ffffff80;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #ffffffb3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .header-text p {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: #0a1f3f;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .chapter {
+            background: var(--card-bg);
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f5;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-family: 'Georgia', serif;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--accent-color);
+            font-family: 'Georgia', serif;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .equation {
+            background-color: #f7f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .image-placeholder {
+            background-color: #eaeff2;
+            border: 1px solid #ccd5dc;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #556370;
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .image-placeholder span {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-style: normal;
+        }
+
+        .forum-section {
+            background-color: #f0f4f8;
+            border-top: 4px solid var(--accent-color);
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .forum-section h2 {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .question-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .question-card p {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .comment-box {
+            width: 100%;
+            height: 80px;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccd5dc;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: sans-serif;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .chapter {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="header-text">
+                <h1>Física II: Fundamentos Macroscópicos</h1>
+                <p>Un compendio teórico-práctico para el nivel universitario</p>
+            </div>
+            <div class="logo-area">
+                [ Espacio para Logo ]
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#elasticidad">Elasticidad</a>
+            <a href="#mas">M.A.S.</a>
+            <a href="#ondas">Ondas</a>
+            <a href="#cuestionario">Cuestionario</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <article id="elasticidad" class="chapter">
+            <h2>Capítulo 1: Elasticidad de los Materiales</h2>
+            <p>En el estudio de la mecánica de sólidos, la <strong>elasticidad</strong> es la propiedad mecánica que describe la capacidad de un cuerpo para sufrir deformaciones reversibles cuando se encuentra sujeto a la acción de fuerzas externas, recuperando su forma y dimensiones originales una vez que dichas cargas son retiradas.</p>
+            
+            <h3>1.1 Esfuerzo y Deformación Unitaria</h3>
+            <p>Para cuantificar el comportamiento elástico, se definen dos magnitudes fundamentales: el esfuerzo ($\sigma$) y la deformación unitaria ($\epsilon$). El esfuerzo se define como la fuerza aplicada por unidad de área, mientras que la deformación unitaria representa el cambio fraccionario en las dimensiones del objeto.</p>
+            
+            <div class="equation">
+                $$\sigma = \frac{F}{A} \quad \text{y} \quad \epsilon = \frac{\Delta L}{L_0}$$
+            </div>
+
+            <h3>1.2 Ley de Hooke Generalizada y Módulo de Young</h3>
+            <p>Dentro del límite elástico de un material, existe una relación de linealidad directa entre el esfuerzo aplicado y la deformación resultante. Esta relación se conoce como la Ley de Hooke. Para una deformación por tracción o compresión unidimensional, la constante de proporcionalidad es el <strong>Módulo de Young</strong> ($Y$ o $E$):</p>
+            
+            <div class="equation">
+                $$\sigma = Y \cdot \epsilon \implies \frac{F}{A} = Y \left(\frac{\Delta L}{L_0}\right)$$
+            </div>
+
+            <div class="image-placeholder">
+                <span>[Imagen 1.1: Diagrama de Esfuerzo vs. Deformación]</span>
+                Gráfica académica que ilustra el límite elástico, la región de proporcionalidad lineal (Ley de Hooke), el punto de fluencia y la zona de ruptura del material.
+            </div>
+
+            <h3>1.3 Módulos de Rigidez de Corte y Volumétrico</h3>
+            <p>Cuando las fuerzas aplicadas son tangenciales a las superficies del sólido, se produce un esfuerzo de corte, gobernado por el Módulo de Corte ($G$). Por otro lado, si un cuerpo se somete a una presión hidrostática uniforme $\Delta P$, experimenta una deformación en todo su volumen, fenómeno regulado por el Módulo Volumétrico ($B$):</p>
+            
+            <div class="equation">
+                $$\Delta P = -B \left(\frac{\Delta V}{V_0}\right)$$
+            </div>
+            <p>El signo negativo indica que un incremento de la presión externa produce invariablemente una reducción del volumen original del cuerpo.</p>
+        </article>
+
+        <article id="mas" class="chapter">
+            <h2>Capítulo 2: Movimiento Armónico Simple (M.A.S.)</h2>
+            <p>El <strong>Movimiento Armónico Simple</strong> es un modelo cinemático y dinámico idealizado que describe a un sistema periódico oscilatorio en ausencia de fuerzas de fricción o disipativas. Este movimiento es originado por una fuerza restauradora lineal, la cual es directamente proporcional al desplazamiento del sistema respecto a su posición de equilibrio hidrostático o mecánico.</p>
+
+            <h3>2.1 Ecuación Diferencial del Movimiento</h3>
+            <p>A partir de la segunda ley de Newton y la ley de Hooke para un sistema masa-resorte, se establece la ecuación diferencial lineal de segundo orden que gobierna el M.A.S.:</p>
+            
+            <div class="equation">
+                $$m\frac{d^2x}{dt^2} + kx = 0 \implies \frac{d^2x}{dt^2} + \omega^2 x = 0$$
+            </div>
+            
+            <p>Donde $\omega$ representa la frecuencia angular del sistema, definida formalmente como:</p>
+            
+            <div class="equation">
+                $$\omega = \sqrt{\frac{k}{m}}$$
+            </div>
+
+            <div class="image-placeholder">
+                <span>[Imagen 2.1: Sistema Masa-Resorte y Proyección Circular]</span>
+                Esquema dinámico que muestra la oscilación de una masa unida a un resorte helicoidal, junto con la correspondencia geométrica del movimiento armónico como la proyección de un Movimiento Circular Uniforme (MCU).
+            </div>
+
+            <h3>2.2 Ecuaciones de Posición, Velocidad y Aceleración</h3>
+            <p>La solución general de la ecuación diferencial del M.A.S. describe la posición $x(t)$ de la partícula en función del tiempo, donde $A$ es la amplitud máxima y $\phi$ la fase inicial determinada por las condiciones de contorno:</p>
+            
+            <div class="equation">
+                $$x(t) = A \cos(\omega t + \phi)$$
+                $$v(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \phi)$$
+                $$a(t) = \frac{dv}{dt} = -A\omega^2 \cos(\omega t + \phi) = -\omega^2 x(t)$$
+            </div>
+
+            <h3>2.3 Conservación de la Energía en el M.A.S.</h3>
+            <p>En un sistema armónico ideal, la energía mecánica total ($E$) permanece constante a lo largo del tiempo, transformándose continuamente de energía cinética ($K$) a energía potencial elástica ($U$):</p>
+            
+            <div class="equation">
+                $$E = K + U = \frac{1}{2}mv^2 + \frac{1}{2}kx^2 = \frac{1}{2}kA^2$$
+            </div>
+        </article>
+
+        <article id="ondas" class="chapter">
+            <h2>Capítulo 3: Cinemática y Dinámica de Ondas</h2>
+            <p>Una <strong>onda</strong> se define como la propagación de una perturbación espacio-temporal a través de un medio material (ondas mecánicas) o del vacío (ondas electromagnéticas). El aspecto fundamental del movimiento ondulatorio es que genera transporte de energía y cantidad de movimiento sin que exista transferencia neta de materia.</p>
+
+            <h3>3.1 Clasificación de las Ondas</h3>
+            <p>Las ondas pueden clasificarse bajo distintos criterios vectoriales:</p>
+            <ul>
+                <li><strong>Ondas Transversales:</strong> Las partículas del medio oscilan perpendicularmente a la dirección de propagación de la onda (ej. ondas en una cuerda).</li>
+                <li><strong>Ondas Longitudinales:</strong> Las partículas del medio oscilan en la misma dirección en la que se propaga la perturbación (ej. ondas sonoras).</li>
+            </ul>
+
+            <h3>3.2 La Función de Onda Viajera</h3>
+            <p>Matemáticamente, una onda armónica unidimensional que se propaga hacia la dirección positiva del eje $x$ se modela mediante la siguiente función de onda:</p>
+            
+            <div class="equation">
+                $$y(x,t) = A \sin(kx - \omega t + \phi)$$
+            </div>
+            
+            <p>Donde introducemos el parámetro del número de onda espacial ($k$) y la relación con la longitud de onda ($\lambda$):</p>
+            
+            <div class="equation">
+                $$k = \frac{2\pi}{\lambda} \quad \text{y} \quad \omega = 2\pi f = \frac{2\pi}{T}$$
+            </div>
+
+            <div class="image-placeholder">
+                <span>[Imagen 3.1: Parámetros Espaciales y Temporales de una Onda Sinusoidal]</span>
+                Representación gráfica de una onda armónica transitoria, identificando visualmente los nodos, antinodes, crestas, valles, la longitud de onda ($\lambda$) y la amplitud ($A$).
+            </div>
+
+            <h3>3.3 Velocidad de Propagación</h3>
+            <p>La velocidad con la que se desplaza el perfil de la onda (velocidad de fase) depende intrínsecamente de las propiedades mecánicas e inerciales del medio. Para una onda transitoria en una cuerda ideal bajo una tensión $T$ y con densidad lineal de masa $\mu$, la velocidad está dada por:</p>
+            
+            <div class="equation">
+                $$v = \lambda \cdot f = \frac{\omega}{k} = \sqrt{\frac{T}{\mu}}$$
+            </div>
+        </article>
+
+        <section id="cuestionario" class="forum-section">
+            <h2>Panel de Discusión y Evaluación Académica</h2>
+            <p>A continuación se plantean interrogantes analíticas basadas en el compendio de lecturas anterior. Use la sección de comentarios integrada para enviar sus respuestas y debatir con sus pares académicos.</p>
+
+            <div class="question-card">
+                <p>Pregunta 1 (Elasticidad):</p>
+                <label>Si un cable de acero se corta exactamente a la mitad de su longitud original, ¿qué ocurre con el valor de su Módulo de Young y qué ocurre con su constante elástica de rigidez $k$? Justifique su respuesta desde la escala macroscópica y microscópica.</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
+            </div>
+
+            <div class="question-card">
+                <p>Pregunta 2 (Movimiento Armónico Simple):</p>
+                <label>En un oscilador armónico real masa-resorte, ¿en qué posición de la trayectoria la magnitud de la aceleración alcanza su valor crítico máximo y en qué punto la energía cinética iguala exactamente a la energía potencial elástica?</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
+            </div>
+
+            <div class="question-card">
+                <p>Pregunta 3 (Ondas):</p>
+                <label>Explique detalladamente la diferencia mecánica entre la velocidad de fase de una onda mecánica viajera ($v$) y la velocidad transversal instantánea ($v_y$) de una partícula individual perteneciente al medio de propagación.</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Cátedra de Física Universitaria II. Reservados todos los derechos teóricos.</p>
+    </footer>
+
+</body>
+</html>
