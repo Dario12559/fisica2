@@ -17,6 +17,18 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
     <style>
+/* Estilo formal para las imágenes reales */
+    .imagen-academica {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        max-height: 400px; /* Cambia este número si quieres que sea más alta */
+        margin: 2rem auto;
+        border: 1px solid var(--secondary-color);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 4px;
+        background-color: white;
+    }
         :root {
             --primary-color: #0f2c59;
             --secondary-color: #dadbdc;
@@ -283,8 +295,7 @@
             </div>
 
             <div class="image-placeholder">
-                <span>[Imagen 1.1: Diagrama de Esfuerzo vs. Deformación]</span>
-                Gráfica académica que ilustra el límite elástico, la región de proporcionalidad lineal (Ley de Hooke), el punto de fluencia y la zona de ruptura del material.
+               <img src="elasticidad.png" alt="Diagrama de Esfuerzo vs Deformación" class="imagen-academica">
             </div>
 
             <h3>1.3 Módulos de Rigidez de Corte y Volumétrico</h3>
